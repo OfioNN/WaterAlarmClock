@@ -10,7 +10,7 @@ A fully custom-built ESP32-C3 **water-based alarm clock**, featuring a real-time
 📐 Enclosure Model
 <p align="center"> <img src="images/FrontModel.png" width="400"> </p>
 🛠️ Final Product
-<table> <tr> <td><img src="images/frontFinal.jpg" width="250"></td> <td><img src="images/backFinal.jpg" width="250"></td> <td><img src="images/insideFinal.jpg" width="250"></td> </tr> </table>
+<p align="center"><table> <tr> <td><img src="images/frontFinal.jpg" width="250"></td> <td><img src="images/backFinal.jpg" width="250"></td> <td><img src="images/insideFinal.jpg" width="250"></td> </tr> </table></p>
 
 ## ⭐ Features
 
@@ -129,6 +129,16 @@ This project taught me:
 - How to design enclosures in Fusion 360 and export printable STL  
 - How to structure projects for GitHub and documentation  
 
+---
+## 🚀 Future Ideas
+- **Mobile app integration**
+    - Connect via BLE or Wi-Fi and manage the device from a companion app.
+
+- **Water level sensor**
+    - Detect empty tank and notify the user via buzzer, LED, or phone app.
+
+- **Multiple alarms support**
+    - Allow adding several alarms with custom repetition (daily, weekdays, intervals).
 ---
 
 ## 📜 License

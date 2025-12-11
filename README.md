@@ -8,7 +8,7 @@ A fully custom-built ESP32-C3 **water-based alarm clock**, featuring a real-time
 ## 📸 Project Preview
 
 📐 Enclosure Model
-<p align="center"> <img src="images/frontModel.png" width="400"> </p>
+<p align="center"> <img src="images/FrontModel.png" width="400"> </p>
 🛠️ Final Product
 <table> <tr> <td><img src="images/frontFinal.jpg" width="250"></td> <td><img src="images/backFinal.jpg" width="250"></td> <td><img src="images/insideFinal.jpg" width="250"></td> </tr> </table>
 

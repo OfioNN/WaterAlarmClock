@@ -1,40 +1,67 @@
-# ⏰ Water Alarm Clock (Arduino Project)
+<h1 align="center">WaterAlarmClock 🚿⏰</h1>
 
-A fully functional **water-based alarm clock** built using Arduino, RTC DS1302, I2C LCD, relay control, LED indicators and a custom 3D-printed enclosure.
 
-The alarm is designed to activate a water pump using a relay, creating a unique and practical wake-up mechanism.  
-The project includes complete source code and a printable STL housing.
+A fully custom-built ESP32-C3 **water-based alarm clock**, featuring a real-time clock module, LCD display, configurable alarm, LED pre-alarm effects, relay-controlled washer pump, and a fully 3D-printed enclosure designed in Autodesk Fusion.
 
 ---
 
 ## 📸 Project Preview
 
-![Device Render](images/FrontModel.png)
-
----
+📐 Enclosure Model
+<p align="center"> <img src="images/frontModel.png" width="400"> </p>
+🛠️ Final Product
+<table> <tr> <td><img src="images/frontFinal.jpg" width="250"></td> <td><img src="images/backFinal.jpg" width="250"></td> <td><img src="images/insideFinal.jpg" width="250"></td> </tr> </table>
 
 ## ⭐ Features
 
-- ✔️ Real-time clock using **DS1302**
-- ✔️ LCD display with automatic on/off
-- ✔️ Alarm time saved in non-volatile memory (**Preferences**)
-- ✔️ Adjustable alarm using three physical buttons (+ / – / OK)
-- ✔️ Early warning LED sequence (30 seconds before alarm)
-- ✔️ Multi-stage alarm relay activation (water pump)
-- ✔️ Custom 3D-printed enclosure included (STL)
-- ✔️ Modular, extendable code (servo motor planned)
+- LCD 1602 I2C displaying current date & time
+- Configurable alarm using three hardware buttons (+ / – / OK)
+- Non-volatile storage (Preferences) for alarm settings
+- Energy-saving mode: long press +/– toggles LCD on/off
+- Pre-alarm LED sequence 30 seconds before the actual alarm
+- Water alarm using a 12V washer pump controlled via relay
+- RTC DS1302 for accurate timekeeping with CR2032 backup
+- Custom-designed enclosure (Fusion 360) with 3D-printed parts
 
 ---
 
-## 🛠️ Hardware Used
+## 🛠️ Components Used
 
-- ESP32
-- RTC **DS1302** + battery backup
-- I2C LCD 16×2
-- Relay module (5V)
-- LEDs x5
-- 3x buttons (UP, DOWN, OK)
-- 3D-printed housing (included in `/stl`)
+| Component                            | Description                         |
+| ------------------------------------ | ----------------------------------- |
+| **ESP32-C3**                         | Main microcontroller                |
+| **LCD 1602 I2C**                     | User interface (time display)       |
+| **RTC DS1302 + CR2032**              | Real-time clock with backup battery |
+| **3 mechanical buttons**             | Navigation: + / – / OK              |
+| **5 red LEDs**                       | Pre-alarm notification              |
+| **BC337 transistor**                 | LED driving                         |
+| **Relay module (5V, 10A)**           | Controls 12V washer pump            |
+| **Windshield washer pump 12V**       | Physical "water alarm"              |
+| **LM2596 step-down regulator**       | Power supply                        |
+| **3× 18650 Li-Ion cells (2200 mAh)** | Main battery                        |
+| **Battery holder**                   | 3-cell configuration                |
+| **Silicone tube (4×6 mm)**           | Water transport                     |
+| **3D-printed enclosure**             | Designed in Autodesk Fusion         |
+
+
+---
+## 🧠 Alarm Logic
+**Button Functions**
+- Short press + → +15 minutes
+- Short press – → –15 minutes
+- Long press + (5s) → enable LCD
+- Long press – (5s) → disable LCD
+- OK → enter/exit alarm setting mode & save to NVS
+
+**LED Pre-alarm Sequence (starts 30s before alarm)**
+- 20 seconds – blinking every 1s
+- 10 seconds – blinking every 0.25s
+- LEDs turn off until alarm triggers
+
+**Alarm (Relay Sequence)**
+- 2s ON → 5s OFF → 2s ON → 2.5s OFF → final 2s ON
+- Pump stops, LEDs turn off
+- LCD resets to normal view
 
 ---
 
@@ -44,13 +71,20 @@ The project includes complete source code and a printable STL housing.
 WaterAlarmClock/
 │
 ├── src/
-│ └── WaterAlarm.ino
+│   └── WaterAlarm.ino
 │
 ├── stl/
-│ └── enclosure.stl # 3D printed housing (Fusion 360 exported)
+│   ├── front.stl
+│   ├── back.stl
+│   ├── main.stl
+│   └── stamps.stl
 │
 └── images/
-└── device_render.png # Preview render
+    ├── frontModel.png
+    ├── frontFinal.png
+    ├── backFinal.png
+    └── insideFinal.png
+
 ```
 
 
@@ -58,11 +92,11 @@ WaterAlarmClock/
 
 ## ▶️ How to Run
 
-1. Install dependencies:
-   - `LiquidCrystal_I2C`
-   - `RtcDS1302`
-   - `ThreeWire`
-   - `Preferences` (ESP32)
+1. Install required Arduino libraries:
+- LiquidCrystal_I2C
+- RtcDS1302
+- ThreeWire
+- Preferences (built-in for ESP32)
 
 2. Upload the code to your board:
 ```
@@ -79,9 +113,9 @@ src/WaterAlarm.ino
 | Buttons + / – / OK | 3 / 2 / 1 |
 | LED control | 0 |
 
-4. Print enclosure from `/stl/enclosure.stl`
+4. Print the enclosure using the STLs inside `/stl/`.
 
-5. Enjoy your water alarm 😄
+5. Power the ESP32-C3 + pump system and enjoy your water alarm 😄
 
 ---
 
@@ -93,7 +127,7 @@ This project taught me:
 - How to use non-volatile memory (`Preferences`) to store settings  
 - How to build multi-stage event logic without blocking `loop()`  
 - How to design enclosures in Fusion 360 and export printable STL  
-- How to structure Arduino projects for GitHub and documentation  
+- How to structure projects for GitHub and documentation  
 
 ---
 

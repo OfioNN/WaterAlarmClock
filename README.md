@@ -1,4 +1,4 @@
-<h1 align="center">WaterAlarmClock 🚿⏰</h1>
+<h1 align="center">Water Alarm Clock 🚿⏰</h1>
 
 
 A fully custom-built ESP32-C3 **water-based alarm clock**, featuring a real-time clock module, LCD display, configurable alarm, LED pre-alarm effects, a relay-controlled washer pump, and a fully 3D-printed enclosure designed in Autodesk Fusion — creating a unique and practical wake-up mechanism.
